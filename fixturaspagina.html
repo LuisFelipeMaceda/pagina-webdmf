@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fixturas - DMF Industrial</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+  body { font-family: 'Montserrat', sans-serif; margin: 0; background-color: #f0f0f0; color: #333; }
+  header { background-color: #4b0082; color: white; text-align: center; padding: 15px 0; }
+  nav { background-color: #333; display: flex; justify-content: center; flex-wrap: wrap; }
+  nav a { color: white; padding: 12px 20px; text-decoration: none; }
+  nav a:hover { background-color: #6a0dad; }
+  h2 { text-align: center; color: #4b0082; margin-top: 40px; margin-bottom: 20px; }
+
+  .galeria { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 0 10%; }
+
+  .galeria-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nombre-fixtura {
+    margin: 0 0 8px 0;
+    font-weight: 600;
+    color: #4b0082;
+    text-align: center;
+  }
+
+  .galeria img { 
+    width: 250px; 
+    height: 200px; 
+    object-fit: cover; 
+    border-radius: 10px; 
+    cursor: pointer; 
+    transition: transform 0.3s, box-shadow 0.3s; 
+  }
+
+  .galeria img:hover { 
+    transform: scale(1.05); 
+    box-shadow: 0 8px 15px rgba(0,0,0,0.3); 
+  }
+
+  /* Lightbox */
+  #lightbox { position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.95); display:none; justify-content:center; align-items:center; flex-direction:column; z-index:1000; padding:20px; box-sizing:border-box; }
+  #lightboxMain { max-width: 90%; max-height: 70%; border-radius:10px; display:block; }
+  #lightboxVideo { max-width:90%; max-height:70%; border-radius:10px; display:none; }
+
+  #lightbox span.close { position:absolute; top:20px; right:40px; font-size:2rem; color:white; cursor:pointer; z-index:1001; }
+  #lightboxThumbnails { display:flex; justify-content:center; gap:10px; margin-top:15px; flex-wrap:wrap; }
+  #lightboxThumbnails img { width:80px; height:60px; object-fit:cover; border-radius:5px; cursor:pointer; transition: transform 0.2s, box-shadow 0.2s; }
+  #lightboxThumbnails img:hover { transform:scale(1.1); box-shadow:0 4px 8px rgba(0,0,0,0.3); }
+
+  .arrow { position:absolute; top:50%; transform:translateY(-50%); font-size:2.5rem; color:white; cursor:pointer; padding:10px; user-select:none; z-index:1001; }
+  .arrow-left { left:20px; }
+  .arrow-right { right:20px; }
+
+  #topBtn { position:fixed; bottom:20px; right:20px; background-color:#4b0082; color:white; border:none; border-radius:50%; width:45px; height:45px; font-size:20px; cursor:pointer; box-shadow:0 3px 8px rgba(0,0,0,0.3); z-index:1000; display:none; }
+  footer { text-align:center; padding:20px; background-color:#222; color:#ccc; margin-top:40px; }
+
+  @media (max-width:768px) {
+    .galeria img { width:45%; height:auto; }
+    #lightboxMain, #lightboxVideo { max-height:50%; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Fixturas - DMF Industrial</h1>
+  <nav>
+    <a href="index.html"><i class="fa fa-home"></i> Inicio</a>
+    <a href="index.html#servicios"><i class="fa fa-cogs"></i> Servicios</a>
+  </nav>
+</header>
+
+<h2>Nuestra Galería de Fixturas</h2>
+
+<div class="galeria">
+  <!-- Repite los ítems según tus fixturas -->
+  <div class="galeria-item"><h3 class="nombre-fixtura">Fixtura 1</h3><img src="fixtura1_1.jpg" alt="Fixtura 1" data-group="fixtura1"></div>
+  <div class="galeria-item"><h3 class="nombre-fixtura">Fixtura 2</h3><img src="fixtura2_1.jpg" alt="Fixtura 2" data-group="fixtura2"></div>
+  <div class="galeria-item"><h3 class="nombre-fixtura">Fixtura 3</h3><img src="fixtura3_1.jpg" alt="Fixtura 3" data-group="fixtura3"></div>
+  <div class="galeria-item"><h3 class="nombre-fixtura">Fixtura 4</h3><img src="fixtura4_1.jpg" alt="Fixtura 4" data-group="fixtura4"></div>
+  <div class="galeria-item"><h3 class="nombre-fixtura">Fixtura 5</h3><img src="fixtura5_1.jpg" alt="Fixtura 5" data-group="fixtura5"></div>
+  <div class="galeria-item"><h3 class="nombre-fixtura">Fixtura 6</h3><img src="fixtura6_1.jpg" alt="Fixtura 6" data-group="fixtura6"></div>
+  <div class="galeria-item"><h3 class="nombre-fixtura">Fixtura 7</h3><img src="fixtura7_1.jpg" alt="Fixtura 7" data-group="fixtura7"></div>
+  <div class="galeria-item"><h3 class="nombre-fixtura">Fixtura 8</h3><img src="fixtura8_1.jpg" alt="Fixtura 8" data-group="fixtura8"></div>
+  <div class="galeria-item"><h3 class="nombre-fixtura">Fixtura 9</h3><img src="fixtura9_1.jpg" alt="Fixtura 9" data-group="fixtura9"></div>
+  <div class="galeria-item"><h3 class="nombre-fixtura">Fixtura 10</h3><img src="fixtura10_1.jpg" alt="Fixtura 10" data-group="fixtura10"></div>
+</div>
+
+<!-- Lightbox -->
+<div id="lightbox">
+  <span class="close" onclick="cerrarLightbox()">&times;</span>
+  <i class="fas fa-chevron-left arrow arrow-left" onclick="prevMedia()"></i>
+  <i class="fas fa-chevron-right arrow arrow-right" onclick="nextMedia()"></i>
+  <img id="lightboxMain" src="" alt="">
+  <video id="lightboxVideo" controls></video>
+  <div id="lightboxThumbnails"></div>
+</div>
+
+<button id="topBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">↑</button>
+
+<footer>
+  <p>&copy; 2025 DMF Industrial | Todos los derechos reservados</p>
+</footer>
+
+<script>
+const galeria = document.querySelectorAll('.galeria img');
+const lightbox = document.getElementById('lightbox');
+const lightboxMain = document.getElementById('lightboxMain');
+const lightboxVideo = document.getElementById('lightboxVideo');
+const lightboxThumbs = document.getElementById('lightboxThumbnails');
+const topBtn = document.getElementById('topBtn');
+
+// ✅ Corregido: faltaban comas entre los objetos
+const mediaByGroup = {
+  fixtura1: { images: ["fixtura1_1.jpg","fixtura1_2.jpg","fixtura1_3.jpg"], video: "fixtura1_video.mp4" },
+  fixtura2: { images: ["fixtura2_1.jpg","fixtura2_2.jpg","fixtura2_3.jpg"], video: "fixtura2_video.mp4" },
+  fixtura3: { images: ["fixtura3_1.jpg","fixtura3_2.jpg","fixtura3_3.jpg"], video: "fixtura3_video.mp4" },
+  fixtura4: { images: ["fixtura4_1.jpg","fixtura4_2.jpg","fixtura4_3.jpg"], video: "fixtura4_video.mp4" },
+  fixtura5: { images: ["fixtura5_1.jpg","fixtura5_2.jpg","fixtura5_3.jpg"], video: "fixtura5_video.mp4" },
+  fixtura6: { images: ["fixtura6_1.jpg","fixtura6_2.jpg","fixtura6_3.jpg"], video: "fixtura6_video.mp4" },
+  fixtura7: { images: ["fixtura7_1.jpg","fixtura7_2.jpg","fixtura7_3.jpg"], video: "fixtura7_video.mp4" },
+  fixtura8: { images: ["fixtura8_1.jpg","fixtura8_2.jpg","fixtura8_3.jpg"], video: "fixtura8_video.mp4" },
+  fixtura9: { images: ["fixtura9_1.jpg","fixtura9_2.jpg","fixtura9_3.jpg"], video: "fixtura9_video.mp4" },
+  fixtura10: { images: ["fixtura10_1.jpg","fixtura10_2.jpg","fixtura10_3.jpg"], video: "fixtura10_video.mp4" }
+};
+
+let currentMedia = [];
+let currentIndex = 0;
+
+galeria.forEach(img => {
+  img.addEventListener('click', () => {
+    const groupName = img.dataset.group;
+    const data = mediaByGroup[groupName];
+    currentMedia = [...data.images];
+    if (data.video) currentMedia.push(data.video);
+    currentIndex = 0;
+    showLightbox();
+  });
+});
+
+function showLightbox() {
+  updateMedia();
+
+  lightboxThumbs.innerHTML = '';
+  currentMedia.forEach((src, idx) => {
+    if (src.endsWith(".mp4")) return;
+    const thumb = document.createElement('img');
+    thumb.src = src;
+    thumb.alt = `Ángulo ${idx+1}`;
+    thumb.addEventListener('click', () => {
+      currentIndex = idx;
+      updateMedia();
+    });
+    lightboxThumbs.appendChild(thumb);
+  });
+
+  lightbox.style.display = 'flex';
+}
+
+function updateMedia() {
+  const src = currentMedia[currentIndex];
+  if (src.endsWith(".mp4")) {
+    lightboxMain.style.display = 'none';
+    lightboxVideo.style.display = 'block';
+    lightboxVideo.src = src;
+    lightboxVideo.play();
+  } else {
+    lightboxVideo.pause();
+    lightboxVideo.style.display = 'none';
+    lightboxVideo.src = '';
+    lightboxMain.style.display = 'block';
+    lightboxMain.src = src;
+  }
+}
+
+function prevMedia() {
+  currentIndex = (currentIndex - 1 + currentMedia.length) % currentMedia.length;
+  updateMedia();
+}
+
+function nextMedia() {
+  currentIndex = (currentIndex + 1) % currentMedia.length;
+  updateMedia();
+}
+
+function cerrarLightbox() {
+  lightbox.style.display = 'none';
+  lightboxVideo.pause();
+  lightboxVideo.src = '';
+  lightboxMain.src = '';
+  lightboxThumbs.innerHTML = '';
+  currentMedia = [];
+  currentIndex = 0;
+}
+
+lightbox.addEventListener('click', e => { if (e.target === lightbox) cerrarLightbox(); });
+
+window.onscroll = () => {
+  topBtn.style.display = (window.scrollY > 300) ? 'block' : 'none';
+};
+</script>
+
+</body>
+</html>
