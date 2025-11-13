@@ -301,6 +301,53 @@
       .servicio { flex: 1 1 100%; } 
       #sobre-nosotros { flex-direction: column; padding: 40px 10%; }
     }
+
+
+ /* ====== CONTACTO ====== */
+    #contacto a {
+      color: #4b0082;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    #contacto a:hover { text-decoration: underline; }
+    #contacto i { margin-right: 8px; color: #4b0082; }
+
+    footer {
+      background-color: #222;
+      color: #ccc;
+      text-align: center;
+      padding: 20px 0;
+      font-size: 0.9rem;
+    }
+
+    .logo { color: #b8b8ff; font-weight: bold; }
+
+    #topBtn {
+      position: fixed; 
+      bottom: 20px; 
+      right: 20px;
+      background-color: #4b0082; 
+      color: white;
+      border: none; 
+      border-radius: 50%;
+      width: 45px; 
+      height: 45px; 
+      font-size: 20px;
+      cursor: pointer; 
+      box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+      z-index: 1000;
+    }
+
+    @media (max-width: 768px) {
+      section, .hero { padding: 40px 8%; }
+      nav a { padding: 12px 15px; }
+      header h1 { font-size: 1.6rem; }
+      .hero h2 { font-size: 1.5rem; }
+      nav ul { flex-direction: column; }
+      .submenu { position: static; box-shadow: none; border-radius: 0; }
+    }
+
+    
   </style>
 </head>
 <body>
@@ -472,6 +519,3 @@
   </script>
 </body>
 </html>
-
-
-
