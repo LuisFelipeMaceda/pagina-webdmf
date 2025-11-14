@@ -156,6 +156,84 @@ header::before {
       border-color: #444;
     }
 
+
+/* ====== POR QUÉ ELEGIRNOS ====== */
+#elegirnos {
+  padding: 60px 10%;
+  background: #f7f7f7;
+}
+
+#elegirnos h2 {
+  text-align: center;
+  color: #4b0082;
+  margin-bottom: 40px;
+  border-bottom: none;
+  font-size: 2rem;
+}
+
+.elegirnos-contenedor {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 40px;
+}
+
+.elegirnos-img {
+  flex: 1 1 45%;
+}
+
+.elegirnos-img img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.elegirnos-texto {
+  flex: 1 1 45%;
+}
+
+.elegirnos-texto h3 {
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.razones {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.razon {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.razon i {
+  font-size: 24px;
+  color: #4b0082;
+  margin-top: 3px;
+}
+
+.razon h4 {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+  color: #111;
+}
+
+.razon p {
+  color: #555;
+}
+
+@media (max-width: 768px) {
+  .elegirnos-contenedor {
+    flex-direction: column;
+  }
+}
+
+
+
+
     /* ===== SOBRE NOSOTROS ANIMADO ===== */
     #sobre-nosotros {
       display: flex;
@@ -326,7 +404,11 @@ header::before {
   height: 100%;
   object-fit: cover; /* mantiene proporciones sin deformar */
 }
-    
+
+
+
+
+
 
     .equipo-lista { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
     .miembro { flex: 1 1 calc(45% - 20px); text-align: center; }
@@ -396,7 +478,7 @@ header::before {
 
  <header>
   <video autoplay muted loop playsinline class="video-fondo">
-    <source src="video-de-fondo.mp4" type="video/mp4">
+    <source src="video-fondo.mp4" type="video/mp4">
     Tu navegador no soporta videos HTML5.
   </video>
 
@@ -496,6 +578,61 @@ header::before {
     </div>
   </section>
 
+
+ <!-- POR QUÉ ELEGIRNOS -->
+<section id="elegirnos">
+  <h2>¿Por qué elegirnos?</h2>
+
+  <div class="elegirnos-contenedor">
+    
+    <!-- Imagen Izquierda -->
+    <div class="elegirnos-img">
+      <img src="elegirnos.jpg" alt="Por qué elegir DMF Industrial">
+    </div>
+
+    <!-- Texto Derecha -->
+    <div class="elegirnos-texto">
+      <h3>¿Por qué elegir DMF Industrial?</h3>
+
+      <div class="razones">
+        <div class="razon">
+          <i class="fa fa-check"></i>
+          <div>
+            <h4>Precisión y calidad</h4>
+            <p>Garantizamos la máxima precisión en cada pieza.</p>
+          </div>
+        </div>
+
+        <div class="razon">
+          <i class="fa fa-forward"></i>
+          <div>
+            <h4>Rapidez y eficiencia</h4>
+            <p>Cumplimos con tus plazos de entrega.</p>
+          </div>
+        </div>
+
+        <div class="razon">
+          <i class="fa fa-tag"></i>
+          <div>
+            <h4>Costos competitivos</h4>
+            <p>Servicios de alta calidad a precios accesibles.</p>
+          </div>
+        </div>
+
+        <div class="razon">
+          <i class="fa fa-headphones"></i>
+          <div>
+            <h4>Soporte técnico</h4>
+            <p>Asistencia profesional en cada etapa del proyecto.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
   <!-- EQUIPO -->
   <section id="equipo">
     <h2>Nuestro Equipo</h2>
@@ -506,6 +643,7 @@ header::before {
       <div class="miembro"><img src="persona4.jpg" alt="Alejandro Nava"><h3>Alejandro Nava</h3><p>Chalán</p></div>
     </div>
   </section>
+
 
   <!-- CONTACTO -->
   <section id="contacto">
@@ -567,5 +705,3 @@ header::before {
   </script>
 </body>
 </html>
-
-
