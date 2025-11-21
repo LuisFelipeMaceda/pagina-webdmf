@@ -71,6 +71,8 @@ header::before {
       background: rgba(0,0,0,0.7);
       z-index: 100;
       padding: 15px 30px;
+        transition: transform 0.3s ease; /* ← transición para aparecer y desaparecer suavemente */
+
     }
 
     nav ul {
@@ -183,7 +185,7 @@ header::before {
 }
 
 .elegirnos-img img {
-  width: 100%;
+  width: 70%;
   border-radius: 10px;
 }
 
@@ -434,7 +436,7 @@ header::before {
       font-weight: bold;
     }
     #contacto a:hover { text-decoration: underline; }
-    #contacto i { margin-right: 8px; color: #4b0082; }
+    #contacto i { margin-right: 8px; color: #875EA8; }
 
     footer {
       background-color: #222;
@@ -449,7 +451,7 @@ header::before {
     #topBtn {
       position: fixed; 
       bottom: 20px; 
-      right: 20px;
+      left: 20px;
       background-color: #4b0082; 
       color: white;
       border: none; 
@@ -471,7 +473,50 @@ header::before {
       .submenu { position: static; box-shadow: none; border-radius: 0; }
     }
 
-    
+    /* Botón WhatsApp flotante */
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25d366;
+  color: #fff;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  font-size: 30px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.3s;
+}
+
+.whatsapp-float:hover {
+  background-color: #1ebe57;
+  text-decoration: none;
+}
+
+    nav.oculto {
+  transform: translateY(-100%);
+  transition: transform 0.3s ease;
+}
+
+#contacto {
+  background-color: #222;
+  color: #ccc;
+}
+
+
+#contacto h2 {
+  color: #fff; /* Para que el título destaque */
+}
+
+#contacto a {
+  color: #b8b8ff; /* Igual estilo del footer o personalizable */
+}
+
   </style>
 </head>
 <body>
@@ -496,6 +541,7 @@ header::before {
       </li>
       <li><a href="#sobre-nosotros"><i class="fa fa-users"></i> Nosotros</a></li>
       <li><a href="#contacto"><i class="fa fa-envelope"></i> Contacto</a></li>
+      <li><a href="ubicacion.html"><i class="fa fa-map-marker-alt"></i> Ubicación</a></li>
     </ul>
   </nav>
 
@@ -647,7 +693,7 @@ header::before {
 
   <!-- CONTACTO -->
   <section id="contacto">
-    <h2>Contáctanos</h2>
+    <h2>Contáctanos para realizar tu cotización</h2>
     <p><i class="fa fa-envelope"></i> <a href="mailto:ventas@dmfindustrial.com.mx">ventas@dmfindustrial.com.mx</a></p>
     <p><i class="fa fa-envelope"></i> <a href="mailto:compras@dmfindustrial.com.mx">compras@dmfindustrial.com.mx</a></p>
     <p><i class="fa fa-phone"></i> <a href="tel:+526649826185">664 982 6185</a></p>
@@ -657,6 +703,12 @@ header::before {
   <footer>
     &copy; 2025 <span class="logo">DMF Industrial</span>. Todos los derechos reservados.
   </footer>
+
+  <!-- Botón flotante de WhatsApp -->
+<a href="https://wa.me/526648577464" class="whatsapp-float" target="_blank" title="Chatea con nosotros por WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
 
   <button id="topBtn" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">&#8679;</button>
 
@@ -702,6 +754,26 @@ header::before {
       currentIndex = (currentIndex + 1) % slides.length;
       slideContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
     }, 4000);
+
+
+
+    let lastScroll = 0;
+const navMenu = document.querySelector('nav');
+
+window.addEventListener('scroll', () => {
+  const currentScroll = window.pageYOffset;
+
+  if (currentScroll > lastScroll && currentScroll > 50) {
+    // Scrolleando hacia abajo
+    navMenu.classList.add('oculto');
+  } else {
+    // Scrolleando hacia arriba
+    navMenu.classList.remove('oculto');
+  }
+
+  lastScroll = currentScroll;
+});
+
   </script>
 </body>
 </html>
