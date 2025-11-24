@@ -194,6 +194,102 @@ nav.oculto {
   transition: transform 0.3s ease;
 }
 
+
+
+
+/* ===== MENU ===== */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.7);
+  z-index: 100;
+  padding: 15px 30px; /* Altura del menú en desktop */
+  transition: transform 0.3s ease;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end; /* Menú a la derecha en desktop */
+  gap: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+  padding: 8px 12px;
+  text-transform: uppercase;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  background-color: rgba(255,255,255,0.2);
+  border-radius: 5px;
+}
+
+nav li {
+  position: relative;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: rgba(0,0,0,0.8);
+  padding: 10px 0;
+  border-radius: 5px;
+  min-width: 180px;
+}
+
+.submenu a {
+  display: block;
+  padding: 8px 20px;
+  color: #fff;
+}
+
+nav li:hover .submenu {
+  display: block;
+}
+
+.titulo-menu {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: 700;
+  pointer-events: none;
+  text-transform: uppercase;
+}
+
+/* ===== MEDIA QUERIES PARA MÓVIL ===== */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column; /* Apila verticalmente en móvil */
+    align-items: flex-start; /* Menú alineado a la izquierda en móvil */
+    gap: 10px;
+  }
+
+  nav {
+    padding: 15px 20px; /* Ajusta altura en móvil si quieres */
+  }
+
+  .submenu {
+    position: relative;
+    top: 0;
+    right: 0;
+    border-radius: 5px;
+    min-width: auto;
+  }
+}
+
+
+
+
   </style>
 </head>
 <body>
@@ -216,6 +312,11 @@ nav.oculto {
     <li><a href="index.html#contacto"><i class="fa fa-envelope"></i> Contacto</a></li>
     <li><a href="ubicacion.html"><i class="fa fa-map-marker-alt"></i> Ubicación</a></li>
   </ul>
+
+  <div class="menu-toggle">
+    <i class="fa fa-bars"></i>
+  </div>
+
 </nav>
 
   <!-- SECCION UBICACION -->
@@ -277,6 +378,16 @@ window.addEventListener('scroll', () => {
 
   lastScroll = currentScroll;
 });
+
+
+
+const toggle = document.querySelector('.menu-toggle');
+const menu = document.querySelector('.menu');
+
+toggle.addEventListener('click', () => {
+  menu.classList.toggle('active');
+});
+
 </script>
 
 </body>
