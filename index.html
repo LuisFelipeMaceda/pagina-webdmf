@@ -112,7 +112,7 @@ header::before {
       top: 10px;
       left: 30px;
       z-index: 101;
-      height: 50px;
+      height: 40px;
     }
 
     .hero-content {
@@ -517,6 +517,73 @@ header::before {
   color: #b8b8ff; /* Igual estilo del footer o personalizable */
 }
 
+
+
+/* HAMBURGUESA */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      width: 30px;
+      height: 22px;
+      justify-content: space-between;
+    }
+
+    .menu-toggle span {
+      height: 3px;
+      width: 100%;
+      background: #fff;
+      border-radius: 2px;
+    }
+
+    /* ===== NAV FINAL ===== */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.7);
+      padding: 15px 30px;
+      z-index: 100;
+      display: flex;
+      justify-content: flex-end;   /* FIX — MENU A LA DERECHA */
+      align-items: center;
+    }
+
+    .nav-list {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    /* MÓVIL */
+    @media (max-width: 768px) {
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .nav-list {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: rgba(0,0,0,0.9);
+        position: absolute;
+        top: 60px;
+        left: 0;
+        padding: 10px 0;
+      }
+
+      .nav-list.active {
+        display: flex;
+      }
+
+      .nav-list li {
+        padding: 10px 0;
+        text-align: center;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -529,6 +596,10 @@ header::before {
 
   <img src="logo.png" alt="Logo DMF Industrial" class="logo-small">
   <nav>
+
+    <div class="menu-toggle" id="mobile-menu">
+      <i class="fa fa-bars"></i>
+    </div>
     
     <ul>
       <li><a href="#inicio"><i class="fa fa-home"></i> Inicio</a></li>
@@ -769,6 +840,17 @@ window.addEventListener('scroll', () => {
 
   lastScroll = currentScroll;
 });
+
+
+
+
+/* MENU MÓVIL */
+    const menuToggle = document.getElementById("mobile-menu");
+    const navList = document.querySelector(".nav-list");
+
+    menuToggle.addEventListener("click", () => {
+      navList.classList.toggle("active");
+    });
 
   </script>
 </body>
