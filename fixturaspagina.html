@@ -271,12 +271,15 @@
   }
 
   .nombre-fixtura {
-    font-weight: 700;
-    font-size: 1.05rem;
-    color: #000;
-    margin-bottom: 8px;
-    text-shadow: 0 2px 6px rgba(0,0,0,0.6);
-  }
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #000;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  text-align: center;
+  text-shadow: none;
+}
+
 
   .galeria img {
     width: 210px;
@@ -576,15 +579,16 @@
   }
 
   .galeria-item {
-    flex: 0 0 33.3333%;
-    max-width: 33.3333%;
-    box-sizing: border-box;
-    padding: 10px;
-  }
+  flex: 0 0 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
 
   .galeria-item img {
-    width: 100%;
-    height: 200px;
+    width: 400px;
+    height: 400px;
     object-fit: cover;
     border-radius: 5px;
   }
@@ -603,12 +607,37 @@
     transition: color 0.3s ease;
   }
 
-  .arrow-left { left: -10px; }
-  .arrow-right { right: 10px; }
+  .arrow-left { left: 30px; }
+  .arrow-right { right: 30px; }
 
   .arrow-left:hover, .arrow-right:hover {
     color: #6a0dad;
   }
+
+
+
+  .carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.carousel-dots .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #bbb;
+  cursor: pointer;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.carousel-dots .dot.active {
+  background: #6a0dad; /* morado del sitio */
+  transform: scale(1.3);
+}
+
+
 
 
   /* HAMBURGUESA */
@@ -675,6 +704,35 @@
         text-align: center;
       }
     }
+
+.industria {
+  margin-bottom: 80px; /* o 80px o lo que necesites */
+}
+
+
+
+/* Fondo semi-transparente */
+.lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    cursor: zoom-out;
+}
+
+/* Imagen centrada y ampliada */
+.lightbox-img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 5px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
 </style>
 
 </head>
@@ -767,15 +825,19 @@
   <h2>MEDICAS</h2>
   <div class="carousel-wrapper">
     <div class="carousel" id="carousel-medicas">
-      <div class="galeria-item"><h3 class="nombre-fixtura">Fixtura 1</h3><img src="fixtura1_1.jpg" alt="Fixtura 1" data-group="fixtura1"></div>
-      <div class="galeria-item"><h3 class="nombre-fixtura">Fixtura 2</h3><img src="fixtura2_1.jpg" alt="Fixtura 2" data-group="fixtura2"></div>
-      <div class="galeria-item"><h3 class="nombre-fixtura">Fixtura 3</h3><img src="fixtura3_1.jpg" alt="Fixtura 3" data-group="fixtura3"></div>
-      <div class="galeria-item"><h3 class="nombre-fixtura">Fixtura 4</h3><img src="fixtura4_1.jpg" alt="Fixtura 4" data-group="fixtura4"></div>
-      <div class="galeria-item"><h3 class="nombre-fixtura">Fixtura 5</h3><img src="fixtura5_1.jpg" alt="Fixtura 5" data-group="fixtura5"></div>
+      <div class="galeria-item"><img src="fixtura1_1.jpg" alt="Fixtura 1" data-group="fixtura1"><h3 class="nombre-fixtura">Fixtura 1</h3></div>
+      <div class="galeria-item"><img src="fixtura2_1.jpg" alt="Fixtura 2" data-group="fixtura2"><h3 class="nombre-fixtura">Fixtura 1</h3></div>
+      <div class="galeria-item"><img src="fixtura3_1.jpg" alt="Fixtura 3" data-group="fixtura3"><h3 class="nombre-fixtura">Fixtura 1</h3></div>
+      <div class="galeria-item"><img src="fixtura4_1.jpg" alt="Fixtura 4" data-group="fixtura4"><h3 class="nombre-fixtura">Fixtura 1</h3></div>
+      <div class="galeria-item"><img src="fixtura5_1.jpg" alt="Fixtura 5" data-group="fixtura5"><h3 class="nombre-fixtura">Fixtura 1</h3></div>
     </div>
     <!-- Flechas para navegar el carrusel -->
     <i class="fa fa-chevron-left arrow-left" data-target="carousel-medicas"></i>
     <i class="fa fa-chevron-right arrow-right" data-target="carousel-medicas"></i>
+
+    <div class="carousel-dots"></div>
+
+
   </div>
 </section>
 
@@ -783,15 +845,17 @@
   <h2>INDUSTRIALES</h2>
   <div class="carousel-wrapper">
     <div class="carousel" id="carousel-industriales">
-      <div class="galeria-item"><h3 class="nombre-fixtura">Fixtura 1</h3><img src="fixtura1_1.jpg" alt="Fixtura 1" data-group="fixtura1"></div>
-      <div class="galeria-item"><h3 class="nombre-fixtura">Fixtura 2</h3><img src="fixtura2_1.jpg" alt="Fixtura 2" data-group="fixtura2"></div>
-      <div class="galeria-item"><h3 class="nombre-fixtura">Fixtura 3</h3><img src="fixtura3_1.jpg" alt="Fixtura 3" data-group="fixtura3"></div>
-      <div class="galeria-item"><h3 class="nombre-fixtura">Fixtura 4</h3><img src="fixtura4_1.jpg" alt="Fixtura 4" data-group="fixtura4"></div>
-      <div class="galeria-item"><h3 class="nombre-fixtura">Fixtura 5</h3><img src="fixtura5_1.jpg" alt="Fixtura 5" data-group="fixtura5"></div>
+      <div class="galeria-item"><img src="fixtura1_1.jpg" alt="Fixtura 1" data-group="fixtura1"><h3 class="nombre-fixtura">Fixtura 1</h3></div>
+      <div class="galeria-item"><img src="fixtura2_1.jpg" alt="Fixtura 2" data-group="fixtura2"><h3 class="nombre-fixtura">Fixtura 1</h3></div>
+      <div class="galeria-item"><img src="fixtura3_1.jpg" alt="Fixtura 3" data-group="fixtura3"><h3 class="nombre-fixtura">Fixtura 1</h3></div>
+      <div class="galeria-item"><img src="fixtura4_1.jpg" alt="Fixtura 4" data-group="fixtura4"><h3 class="nombre-fixtura">Fixtura 1</h3></div>
+      <div class="galeria-item"><img src="fixtura5_1.jpg" alt="Fixtura 5" data-group="fixtura5"><h3 class="nombre-fixtura">Fixtura 1</h3></div>
     </div>
     <!-- Flechas para navegar el carrusel -->
     <i class="fa fa-chevron-left arrow-left" data-target="carousel-industriales"></i>
     <i class="fa fa-chevron-right arrow-right" data-target="carousel-industriales"></i>
+
+  <div class="carousel-dots"></div>
   </div>
 </section>
 
@@ -799,15 +863,19 @@
   <h2>AEROESPACIAL</h2>
   <div class="carousel-wrapper">
     <div class="carousel" id="carousel-aero">
-      <div class="galeria-item"><h3 class="nombre-fixtura">Fixtura 1</h3><img src="fixtura1_1.jpg" alt="Fixtura 1" data-group="fixtura1"></div>
-      <div class="galeria-item"><h3 class="nombre-fixtura">Fixtura 2</h3><img src="fixtura2_1.jpg" alt="Fixtura 2" data-group="fixtura2"></div>
-      <div class="galeria-item"><h3 class="nombre-fixtura">Fixtura 3</h3><img src="fixtura3_1.jpg" alt="Fixtura 3" data-group="fixtura3"></div>
-      <div class="galeria-item"><h3 class="nombre-fixtura">Fixtura 4</h3><img src="fixtura4_1.jpg" alt="Fixtura 4" data-group="fixtura4"></div>
-      <div class="galeria-item"><h3 class="nombre-fixtura">Fixtura 5</h3><img src="fixtura5_1.jpg" alt="Fixtura 5" data-group="fixtura5"></div>
+      <div class="galeria-item"><img src="fixtura1_1.jpg" alt="Fixtura 1" data-group="fixtura1"><h3 class="nombre-fixtura">Fixtura 1</h3></div>
+      <div class="galeria-item"><img src="fixtura2_1.jpg" alt="Fixtura 2" data-group="fixtura2"><h3 class="nombre-fixtura">Fixtura 1</h3></div>
+      <div class="galeria-item"><img src="fixtura3_1.jpg" alt="Fixtura 3" data-group="fixtura3"><h3 class="nombre-fixtura">Fixtura 1</h3></div>
+      <div class="galeria-item"><img src="fixtura4_1.jpg" alt="Fixtura 4" data-group="fixtura4"><h3 class="nombre-fixtura">Fixtura 1</h3></div>
+      <div class="galeria-item"><img src="fixtura5_1.jpg" alt="Fixtura 5" data-group="fixtura5"><h3 class="nombre-fixtura">Fixtura 1</h3></div>
     </div>
     <!-- Flechas para navegar el carrusel -->
     <i class="fa fa-chevron-left arrow-left" data-target="carousel-aero"></i>
     <i class="fa fa-chevron-right arrow-right" data-target="carousel-aero"></i>
+
+  <div class="carousel-dots"></div>
+
+
   </div>
 </section>
 
@@ -815,15 +883,19 @@
   <h2>ELECTRÓNICA</h2>
   <div class="carousel-wrapper">
     <div class="carousel" id="carousel-electronica">
-      <div class="galeria-item"><h3 class="nombre-fixtura">Fixtura 1</h3><img src="fixtura1_1.jpg" alt="Fixtura 1" data-group="fixtura1"></div>
-      <div class="galeria-item"><h3 class="nombre-fixtura">Fixtura 2</h3><img src="fixtura2_1.jpg" alt="Fixtura 2" data-group="fixtura2"></div>
-      <div class="galeria-item"><h3 class="nombre-fixtura">Fixtura 3</h3><img src="fixtura3_1.jpg" alt="Fixtura 3" data-group="fixtura3"></div>
-      <div class="galeria-item"><h3 class="nombre-fixtura">Fixtura 4</h3><img src="fixtura4_1.jpg" alt="Fixtura 4" data-group="fixtura4"></div>
-      <div class="galeria-item"><h3 class="nombre-fixtura">Fixtura 5</h3><img src="fixtura5_1.jpg" alt="Fixtura 5" data-group="fixtura5"></div>
+      <div class="galeria-item"><img src="fixtura1_1.jpg" alt="Fixtura 1" data-group="fixtura1"><h3 class="nombre-fixtura">Fixtura 1</h3></div>
+      <div class="galeria-item"><img src="fixtura2_1.jpg" alt="Fixtura 2" data-group="fixtura2"><h3 class="nombre-fixtura">Fixtura 1</h3></div>
+      <div class="galeria-item"><img src="fixtura3_1.jpg" alt="Fixtura 3" data-group="fixtura3"><h3 class="nombre-fixtura">Fixtura 1</h3></div>
+      <div class="galeria-item"><img src="fixtura4_1.jpg" alt="Fixtura 4" data-group="fixtura4"><h3 class="nombre-fixtura">Fixtura 1</h3></div>
+      <div class="galeria-item"><img src="fixtura5_1.jpg" alt="Fixtura 5" data-group="fixtura5"><h3 class="nombre-fixtura">Fixtura 1</h3></div>
     </div>
     <!-- Flechas para navegar el carrusel -->
     <i class="fa fa-chevron-left arrow-left" data-target="carousel-electronica"></i>
     <i class="fa fa-chevron-right arrow-right" data-target="carousel-electronica"></i>
+
+  <div class="carousel-dots"></div>
+
+
   </div>
 </section>
 </main>
@@ -987,75 +1059,106 @@ window.addEventListener('scroll', () => {
   lastScroll = currentScroll;
 });
 
+document.querySelectorAll('.carousel-wrapper').forEach(container => {
 
-
-
-
-
-
-
-
-  document.querySelectorAll('.carousel-wrapper').forEach(container => {
     const carousel = container.querySelector('.carousel');
-    const items = Array.from(carousel.children);
+    let items = Array.from(carousel.children);
+    const dotsContainer = container.querySelector('.carousel-dots');
+    const realCount = items.length;
 
+    /* === CLONES === */
     const firstClone = items[0].cloneNode(true);
     const lastClone = items[items.length - 1].cloneNode(true);
-
+    firstClone.classList.add("clone");
+    lastClone.classList.add("clone");
     carousel.appendChild(firstClone);
     carousel.insertBefore(lastClone, items[0]);
 
+    items = Array.from(carousel.children);
+
     let index = 1;
     let itemWidth = items[0].offsetWidth;
+    let isTransitioning = false;
 
     function updatePosition(animate = true) {
-        carousel.style.transition = animate ? 'transform 0.5s ease-in-out' : 'none';
+        itemWidth = items[0].offsetWidth; // recalcula ancho siempre
+        carousel.style.transition = animate ? "transform 0.9s ease" : "none";
         carousel.style.transform = `translateX(-${itemWidth * index}px)`;
     }
 
     updatePosition(false);
 
-    window.addEventListener('resize', () => {
-        itemWidth = items[0].offsetWidth;
-        updatePosition(false);
-    });
+    window.addEventListener("resize", () => updatePosition(false));
 
-    container.querySelector('.arrow-left').addEventListener('click', () => {
-        index--;
+    /* === PUNTOS === */
+    for (let i = 0; i < realCount; i++) {
+        const dot = document.createElement("div");
+        dot.classList.add("dot");
+        if (i === 0) dot.classList.add("active");
+        dotsContainer.appendChild(dot);
+    }
+
+    const dots = dotsContainer.querySelectorAll(".dot");
+
+    function updateDots() {
+        dots.forEach(dot => dot.classList.remove("active"));
+        dots[(index - 1 + realCount) % realCount].classList.add("active");
+    }
+
+    /* === NAVEGACIÓN === */
+    function moveTo(nextIndex) {
+        if (isTransitioning) return;
+        isTransitioning = true;
+        index = nextIndex;
         updatePosition();
-    });
+        updateDots();
+    }
 
-    container.querySelector('.arrow-right').addEventListener('click', () => {
-        index++;
-        updatePosition();
-    });
+    container.querySelector(".arrow-left").addEventListener("click", () => moveTo(index - 1));
+    container.querySelector(".arrow-right").addEventListener("click", () => moveTo(index + 1));
 
-    carousel.addEventListener('transitionend', () => {
-        if (index === 0) {
-            index = items.length;
+    dots.forEach((dot, i) => dot.addEventListener("click", () => moveTo(i + 1)));
+
+    /* === LOOP INFINITO === */
+    carousel.addEventListener("transitionend", () => {
+        if (items[index].classList.contains("clone")) {
+            if (index === 0) index = realCount;
+            else if (index === items.length - 1) index = 1;
             updatePosition(false);
         }
-        if (index === items.length + 1) {
-            index = 1;
-            updatePosition(false);
-        }
+        updateDots();
+        isTransitioning = false;
+    });
+
+    /* === AUTOSLIDE === */
+    let autoSlide = setInterval(() => moveTo(index + 1), 3500);
+
+    container.addEventListener("mouseenter", () => clearInterval(autoSlide));
+    container.addEventListener("mouseleave", () => autoSlide = setInterval(() => moveTo(index + 1), 3500));
+
+});
+ // === LIGHTBOX AL HACER CLIC ===
+document.querySelectorAll('.carousel-wrapper .galeria-item img').forEach(img => {
+    img.addEventListener('click', () => {
+        // Crear overlay
+        const overlay = document.createElement('div');
+        overlay.classList.add('lightbox-overlay');
+        
+        // Crear imagen ampliada
+        const zoomImg = document.createElement('img');
+        zoomImg.src = img.src;
+        zoomImg.classList.add('lightbox-img');
+        
+        overlay.appendChild(zoomImg);
+        document.body.appendChild(overlay);
+        
+        // Cerrar al hacer clic en overlay
+        overlay.addEventListener('click', () => {
+            document.body.removeChild(overlay);
+        });
     });
 });
 
-
-
-
-
-/* MENU MÓVIL */
-    const menuToggle = document.getElementById("mobile-menu");
-    const navList = document.querySelector(".nav-list");
-
-    menuToggle.addEventListener("click", () => {
-      navList.classList.toggle("active");
-    });
-
-
 </script>
-
 </body>
 </html>
