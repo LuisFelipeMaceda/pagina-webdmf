@@ -112,7 +112,7 @@ header::before {
       top: 10px;
       left: 30px;
       z-index: 101;
-      height: 40px;
+      height: 60px;
     }
 
     .hero-content {
@@ -536,53 +536,71 @@ header::before {
       border-radius: 2px;
     }
 
-    /* ===== NAV FINAL ===== */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(0,0,0,0.7);
-      padding: 15px 30px;
-      z-index: 100;
-      display: flex;
-      justify-content: flex-end;   /* FIX — MENU A LA DERECHA */
-      align-items: center;
-    }
+    /* NAV GENERAL */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.7);
+  padding: 15px 30px;
+  z-index: 100;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
 
-    .nav-list {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-    }
+/* LISTA DESKTOP */
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
 
-    /* MÓVIL */
-    @media (max-width: 768px) {
+nav a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+}
 
-      .menu-toggle {
-        display: flex;
-      }
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+  font-size: 28px;
+  color: #fff;
+}
 
-      .nav-list {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background: rgba(0,0,0,0.9);
-        position: absolute;
-        top: 60px;
-        left: 0;
-        padding: 10px 0;
-      }
+/* MÓVILES */
+@media (max-width: 768px) {
 
-      .nav-list.active {
-        display: flex;
-      }
+  .menu-toggle {
+    display: block;
+    position: absolute;
+    right: 30px;
+    top: 20px;
+  }
 
-      .nav-list li {
-        padding: 10px 0;
-        text-align: center;
-      }
-    }
+  .nav-list {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: rgba(0,0,0,0.9);
+    position: absolute;
+    top: 60px;
+    left: 0;
+    padding: 15px 0;
+  }
+
+  .nav-list.active {
+    display: flex;
+  }
+
+  .nav-list li {
+    text-align: center;
+    padding: 10px 0;
+  }
+}
+
 
   </style>
 </head>
@@ -595,22 +613,21 @@ header::before {
   </video>
 
   <img src="logo.png" alt="Logo DMF Industrial" class="logo-small">
-  <nav>
+ <nav>
 
-    <div class="menu-toggle" id="mobile-menu">
-      <i class="fa fa-bars"></i>
-    </div>
-    
-    <ul>
+  <div class="menu-toggle" id="mobile-menu">
+    <i class="fa fa-bars"></i>
+  </div>
+
+  <ul class="nav-list">
       <li><a href="#inicio"><i class="fa fa-home"></i> Inicio</a></li>
-      <li>
-        <a href="fixturaspagina.html"><i class="fa fa-cogs"></i> Servicios</a>
-      </li>
+      <li><a href="fixturaspagina.html"><i class="fa fa-cogs"></i> Servicios</a></li>
       <li><a href="#sobre-nosotros"><i class="fa fa-users"></i> Nosotros</a></li>
       <li><a href="#contacto"><i class="fa fa-envelope"></i> Contacto</a></li>
       <li><a href="ubicacion.html"><i class="fa fa-map-marker-alt"></i> Ubicación</a></li>
-    </ul>
-  </nav>
+  </ul>
+</nav>
+
 
   <div class="hero-content">
     <img src="logo.png" alt="Logo DMF Industrial">
@@ -846,7 +863,7 @@ window.addEventListener('scroll', () => {
 
 /* MENU MÓVIL */
     const menuToggle = document.getElementById("mobile-menu");
-    const navList = document.querySelector("nav ul");
+    const navList = document.querySelector(".nav-list");
 
     menuToggle.addEventListener("click", () => {
       navList.classList.toggle("active");
@@ -855,4 +872,5 @@ window.addEventListener('scroll', () => {
   </script>
 </body>
 </html>
+
 
