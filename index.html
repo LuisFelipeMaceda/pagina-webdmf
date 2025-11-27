@@ -581,19 +581,15 @@ nav a {
   }
 
   .nav-list {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    background: rgba(0,0,0,0.9);
-    position: absolute;
-    top: 60px;
-    left: 0;
-    padding: 15px 0;
-  }
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
 
-  .nav-list.active {
-    display: flex;
-  }
+.nav-list.active {
+  opacity: 1;
+  transform: translateY(0);
+}
 
   .nav-list li {
     text-align: center;
@@ -872,5 +868,6 @@ window.addEventListener('scroll', () => {
   </script>
 </body>
 </html>
+
 
 
