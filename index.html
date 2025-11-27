@@ -567,10 +567,9 @@ header::before {
     list-style: none;
     padding: 0;
     
-    /* PANEL FIJO A LA DERECHA */
     position: fixed;
     top: 0;
-    right: -250px; /* escondido fuera de pantalla */
+    right: -250px; 
     height: 100%;
     width: 250px;
     background: rgba(0,0,0,0.9);
@@ -578,23 +577,28 @@ header::before {
 
     display: flex;
     flex-direction: column;
-    align-items: flex-end;     /* opciones a la derecha */
+
+    /* 🔥 OPCIONES A LA IZQUIERDA */
+    align-items: flex-start;
     padding-top: 80px;
+    padding-left: 20px;
 
     opacity: 0;
     transition: right 0.3s ease, opacity 0.3s ease;
   }
 
-  /* MENÚ ACTIVADO (entra desde la derecha) */
   .nav-list.active {
-    right: 0;       /* se mueve adentro */
-    opacity: 1;     /* aparece suave */
+    right: 0;
+    opacity: 1;
   }
 
   .nav-list li {
     width: 100%;
-    text-align: right;
-    padding: 15px 20px;
+    
+    /* 🔥 TEXTO A LA IZQUIERDA */
+    text-align: left;
+
+    padding: 15px 0;
   }
 
   .nav-list li a {
@@ -610,6 +614,7 @@ header::before {
     top: 20px;
   }
 }
+
 
   </style>
 </head>
@@ -885,6 +890,7 @@ menuToggle.addEventListener("click", () => {
   </script>
 </body>
 </html>
+
 
 
 
