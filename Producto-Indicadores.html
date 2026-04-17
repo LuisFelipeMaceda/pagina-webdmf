@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <title>UBICACION - DMF INDUSTRIAL</title>
+
+  <!-- Fuente moderna -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; transition: all 0.3s ease; }
+    body { font-family: 'Montserrat', sans-serif; background-color: #fff; color: #333; }
+
+    /* ===== MENU ===== */
+  
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.7);
+      z-index: 100;
+      padding: 15px 30px;
+       height: 50px; /* Altura fija para el menú */
+      transition: transform 0.3s ease;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: flex-end;
+      gap: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: 600;
+      padding: 8px 12px;
+      text-transform: uppercase;
+      transition: 0.3s;
+    }
+
+    nav a:hover { background-color: rgba(255,255,255,0.2); border-radius: 5px; }
+
+    nav li { position: relative; }
+
+    .submenu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: rgba(0,0,0,0.8);
+      padding: 10px 0;
+      border-radius: 5px;
+      min-width: 180px;
+    }
+    .submenu a { display: block; padding: 8px 20px; color: #fff; }
+
+    nav li:hover .submenu { display: block; }
+
+    .logo-small {
+      position: fixed;
+      top: 10px;
+      left: 30px;
+      z-index: 101;
+      height: 40px;
+    }
+
+    /* ===== SECCIONES ===== */
+    section {
+      padding: 100px 15% 60px;
+      scroll-margin-top: 100px;
+    }
+
+    section h2 {
+      text-align: center;
+      color: #4b0082;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 10px;
+      margin-bottom: 40px;
+      font-size: 2rem;
+    }
+
+   
+
+
+
+
+    footer {
+      background-color: #222;
+      color: #ccc;
+      font-family: 'Montserrat', sans-serif;
+      padding: 40px 15%;
+      text-align: left;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .footer-block {
+      flex: 1 1 200px;
+    }
+
+    .footer-block h3 {
+      color: #fff;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+
+    .footer-block p {
+      margin-bottom: 5px;
+      line-height: 1.5;
+    }
+
+    .footer-block a {
+      color: #ccc;
+      text-decoration: none;
+    }
+
+    .footer-block a:hover {
+      color: #4b0082;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 0.9rem;
+      color: #999;
+    }
+
+    @media (max-width: 768px) {
+      .footer-container {
+        flex-direction: column;
+        gap: 15px;
+      }
+    }
+
+    /* WhatsApp */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25d366;
+      color: #fff;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      text-align: center;
+      font-size: 30px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background 0.3s;
+    }
+
+    .whatsapp-float:hover { background-color: #1ebe57; }
+
+    nav.oculto { transform: translateY(-100%); }
+
+    /* HAMBURGUESA */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      width: 30px;
+      height: 22px;
+      justify-content: space-between;
+    }
+
+    .menu-toggle span {
+      height: 3px;
+      width: 100%;
+      background: #fff;
+      border-radius: 2px;
+    }
+
+    /* ===== NAV FINAL ===== */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.7);
+      padding: 15px 30px;
+      z-index: 100;
+      display: flex;
+      justify-content: flex-end;   /* FIX — MENU A LA DERECHA */
+      align-items: center;
+    }
+
+    .nav-list {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    /* MÓVIL */
+    @media (max-width: 768px) {
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .nav-list {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: rgba(0,0,0,0.9);
+        position: absolute;
+        top: 60px;
+        left: 0;
+        padding: 10px 0;
+      }
+
+      .nav-list.active {
+        display: flex;
+      }
+
+      .nav-list li {
+        padding: 10px 0;
+        text-align: center;
+      }
+    }
+
+    footer .footer-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+footer .footer-menu li {
+  margin: 0 10px;
+  position: relative;
+  font-weight: 500;
+}
+
+footer .footer-menu li:not(:last-child)::after {
+  content: "|"; /* separador entre enlaces */
+  color: #555;
+  margin-left: 10px;
+}
+
+footer .footer-menu li a {
+  color: #ddd;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+footer .footer-menu li a:hover {
+  color: #4b0082; /* azul elegante en hover */
+  transform: scale(1.05);
+}
+
+footer .footer-copy {
+  font-size: 0.9rem;
+  color: #aaa;
+  margin: 0;
+}
+
+footer .logo {
+  font-weight: 700;
+  color: #4b0082;
+}
+
+
+
+
+/* ===== AJUSTES PARA CELULAR (RESPONSIVE) ===== */
+@media (max-width: 768px) {
+  /* 1. Ajuste de márgenes generales */
+  section {
+    padding: 80px 5% 40px !important; /* Menos espacio a los lados para ganar amplitud */
+  }
+
+  section h2 {
+    font-size: 1.6rem !important;
+    margin-bottom: 25px;
+  }
+
+  /* 2. El mapa se vuelve más alto y fácil de usar */
+  .map-container {
+    padding-bottom: 100% !important; /* Formato cuadrado para que sea más grande al tacto */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  
+
+
+
+
+
+
+
+
+/* ESTILO DEL BOTÓN HAMBURGUESA */
+.menu-toggle {
+  display: block; 
+  width: 30px;
+  height: 22px;
+  position: absolute; /* Asegúrate de que sea absolute o fixed */
+  top: 25px;         /* Distancia desde arriba */
+  right: 15px;        /* Bajamos de 30px a 15px para pegarlo más al borde */
+  cursor: pointer;
+  z-index: 200;       /* Siempre por encima de todo */
+}
+
+.menu-toggle span {
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background: #ffffff; /* Color de las rayitas */
+  border-radius: 9px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: .25s ease-in-out;
+}
+
+/* Posición de las 3 rayitas */
+.menu-toggle span:nth-child(1) { top: 0px; }
+.menu-toggle span:nth-child(2) { top: 8px; }
+.menu-toggle span:nth-child(3) { top: 16px; }
+
+/* ANIMACIÓN A "X" CUANDO ESTÁ ACTIVO */
+.menu-toggle.active span:nth-child(1) {
+  top: 8px;
+  transform: rotate(135deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+  left: -60px;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  top: 8px;
+  transform: rotate(-135deg);
+}
+
+
+
+
+
+
+
+
+
+
+/* Mostrar el botón solo en móviles */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+}
+
+
+/* FUERZA EL MENÚ HACIA LA DERECHA (Copia y pega esto en tu media query) */
+@media (max-width: 768px) {
+  .nav-list {
+    /* 1. Posicionamiento absoluto a la derecha */
+    left: auto !important;      /* Anula cualquier empuje desde la izquierda */
+    right: 0 !important;       /* Lo pega al borde derecho */
+    
+    /* 2. Dimensiones y Estilo */
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    width: 220px;
+    background: rgba(20, 20, 20, 0.95);
+    backdrop-filter: blur(8px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 80px;
+    gap: 10px;
+    z-index: 150;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+
+    /* 3. Animación de entrada desde la derecha */
+    /* El valor 100% positivo significa que se esconde a la derecha de la pantalla */
+    transform: translateX(100%) !important; 
+    opacity: 0;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+  }
+
+  /* 4. Estado activo (Cuando el JS añade la clase .active) */
+  .nav-list.active {
+    transform: translateX(0) !important;
+    opacity: 1;
+  }
+
+  /* Estilo de los enlaces para que se vean modernos */
+  .nav-list li {
+    width: 100%;
+    list-style: none;
+  }
+
+  .nav-list li a {
+    font-size: 1rem;
+    color: #fff;
+    padding: 15px 25px;
+    display: block;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .nav-list li a i {
+    width: 25px;
+    color: #4b0082;
+    margin-right: 10px;
+  }
+}
+
+  /* Asegurar que el botón hamburguesa esté sobre el menú */
+  .menu-toggle {
+    display: block;
+    z-index: 200; 
+    top: 25px;
+    right: 30px;
+  }
+}
+
+
+  /* 4. Footer ordenado verticalmente */
+
+  @media (max-width: 768px){
+  .footer-container {
+    flex-direction: column !important;
+    text-align: center;
+    gap: 25px;
+  }
+
+  .footer-block {
+    flex: 1 1 100%;
+  }
+
+  footer {
+    padding: 25px 15px;   /* menos altura */
+  }
+
+  .footer-container {
+    gap: 10px;            /* antes 20px */
+  }
+
+  .footer-block {
+    margin-bottom: 8px;
+  }
+
+  .footer-block h3 {
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+  }
+
+  .footer-block p,
+  .footer-block a {
+    font-size: 0.85rem;
+    line-height: 1.3;
+  }
+
+  /* MENU DEL FOOTER */
+  footer .footer-menu {
+    gap: 6px;
+    margin-bottom: 15px;
+  }
+
+  footer .footer-menu li {
+    font-size: 0.85rem;
+    margin: 4px 6px;
+  }
+
+  footer .footer-menu li::after {
+    margin-left: 6px;
+  }
+
+  /* TEXTO FINAL */
+  .footer-bottom {
+    font-size: 0.75rem;
+    margin-top: 10px;
+  }
+}
+
+  /* 5. Ajuste del Logo */
+  .logo-small {
+    left: 15px;
+    height: 35px;
+  }
+}
+}
+
+
+
+
+
+/*productossssssssssssssssssssssss*/ 
+/* ===== CONTENEDOR GENERAL ===== */
+#productos{
+    padding:120px 20px 60px; /* menos espacio lateral */
+    max-width:1600px; /* más ancho general */
+    margin:auto;
+}
+
+.titulo-productos{
+    text-align:center;
+    margin-bottom:40px;
+    color:#4b0082;
+}
+
+/* ===== ESTRUCTURA TIENDA ===== */
+.contenedor-tienda{
+    display:flex;
+    justify-content:center;
+}
+
+
+/* ===== GALERÍA ===== */
+.catalogo{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    justify-content: center;
+    gap: 30px;
+    max-width: 900px;  
+}
+
+/* ===== TARJETA PRODUCTO ===== */
+.producto{
+    background-color:#E4E4E4 ;
+    width:100%;
+    max-width:350px;
+    margin:auto;
+    border-radius:15px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.08);
+    padding:20px;
+    transition:0.3s;
+    min-height:420px;
+}
+
+.producto:hover{
+    transform:translateY(-5px);
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+.producto img{
+    width:100%;
+    height:auto;
+    max-height:180px;
+    object-fit:contain;
+}
+
+.producto h3{
+  color: #000;
+    font-size:18px;
+    margin-bottom:8px;
+}
+
+.producto li{
+    font-size:14px;
+    color:#000;
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+    .contenedor-tienda{
+        grid-template-columns:1fr;
+    }
+    .filtros-lateral{
+        position:relative;
+        top:0;
+    }
+}
+
+
+
+
+.submenu li a:hover i {
+  transform: translateX(5px);
+  transition: 0.3s ease;
+}
+
+/* Para posicionamiento */
+.nav-list li {
+  position: relative;
+}
+
+/* Submenu oculto */
+.submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #111; /* cambia al color de tu menú */
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+  min-width: 200px;
+  border-radius: 8px;
+
+  /* Animación suave */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+/* Mostrar hacia abajo */
+.dropdown:hover .submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Links del submenu */
+.submenu li a {
+  display: block;
+  padding: 10px 15px;
+  color: white;
+  text-decoration: none;
+}
+
+/* Hover elegante */
+.submenu li a:hover {
+  background: #333;
+}
+
+
+
+
+.extra{
+display:none;
+}
+
+.btn-vermas{
+margin-top:12px;
+padding:6px 14px;
+border:none;
+border-radius:20px;
+background:linear-gradient(135deg,#4b0082,#6a0dad);
+color:white;
+font-size:13px;
+cursor:pointer;
+transition:all .3s ease;
+}
+
+.btn-vermas:hover{
+transform:scale(1.05);
+box-shadow:0 4px 10px rgba(0,0,0,0.15);
+}
+
+
+
+@media (max-width: 768px){
+
+  #productos{
+    padding:90px 15px 40px;
+  }
+
+  .titulo-productos{
+    font-size:22px;
+  }
+
+  .producto{
+    padding:15px;
+  }
+
+  .producto h3{
+    font-size:16px;
+  }
+
+  .producto li{
+    font-size:13px;
+  }
+
+}
+
+@media (max-width: 768px){
+  .btn-vermas{
+    width:100%;
+    text-align:center;
+    padding:8px;
+  }
+}
+
+@media (max-width: 768px){
+  .catalogo{
+    grid-template-columns: 1fr;
+  }
+}
+  </style>
+</head>
+<body>
+
+  <!-- LOGO -->
+  <img src="logo.png" alt="Logo DMF Industrial" class="logo-small">
+
+  <!-- MENU -->
+  <nav>
+    <div class="menu-toggle" id="mobile-menu">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+    <!-- FIX #1: Se agregó class="nav-list" -->
+    <ul class="nav-list">
+      <li><a href="index.html#inicio"><i class="fa fa-home"></i> Inicio</a></li>
+
+      <li>
+        <a href="fixturaspagina.html"><i class="fa fa-cogs"></i> Servicios</a>
+     </li>
+
+<li class="dropdown">
+  <a href="productos.html">
+    <i class="fa fa-plug"></i> productos</a>
+
+  <ul class="submenu">
+  <li><a href="Producto-Basculas.html">Basculas <i class="fa fa-angle-double-right"></i></a></li>
+  <li><a href="Producto-Calibradores.html">Calibradores <i class="fa fa-angle-double-right"></i></a></li>
+  <li><a href="Producto-Micrometros.html">Micrometros <i class="fa fa-angle-double-right"></i></a></li>
+  <li><a href="Producto-Indicadores.html">Indicadores <i class="fa fa-angle-double-right"></i></a></li>
+</ul>
+</li>
+      <li><a href="index.html#sobre-nosotros"><i class="fa fa-users"></i> Nosotros</a></li>
+      <li><a href="index.html#contacto"><i class="fa fa-envelope"></i> Contacto</a></li>
+      <li><a href="ubicacion.html"><i class="fa fa-map-marker-alt"></i> Ubicación</a></li>
+    </ul>
+  </nav>
+
+<section id="productos">
+<h1 class="titulo-productos">Indicadores</h1>
+<div class="contenedor-tienda">
+
+<!-- GALERÍA -->
+<div class="catalogo" id="catalogo">
+
+<!-- PRODUCTOS -->
+<div class="producto" data-tipo="micro" data-precio="1">
+<img src="indicador1.png">
+<h3>Indicador Digimatic 0-2 ̈ 543-854A</h3>
+<ul>
+<li class="extra">Los ID-C/ID-F son la serie ID de nueva generación de Mitutoyo. Facilitan las operaciones de medición y mejoran la calidad de la producción.</li>
+
+<li class="extra">Esta nueva línea de indicadores incluye comunicación serial bidireccional que ayuda a aumentar la eficiencia del trabajo. El indicador se puede conectar y vincular fácilmente con una PC a través de una herramienta de entrada USB.</li>
+
+<button class="btn-vermas">Ver más</button>
+
+<button class="btn-agregar" onclick="agregarAlCarrito(this)">
+  Agregar a cotización
+</button>
+
+</div>
+
+<div class="producto" data-tipo="micro" data-precio="11">
+<img src="indicador2.png">
+<h3>Indicador digital ID-C, tipo ASMEANSI 543-722B</h3>
+<ul> 
+<li class="extra">Comunicación bidireccional.</li>
+<li class="extra">El sensor ABSOLUTO significa que no es necesario realizar la configuración de origen cada vez que lo enciende, lo que le ahorra tiempo y molestias.</li>
+<li class="extra">Excelente visibilidad con una gran pantalla digital/analógica.</li>
+<li class="extra">Es posible realizar mediciones como cálculos simples y detección de picos.</li>
+<li class="extra">Equipado con una función de advertencia del programa de calibración.</li>
+<li class="extra">El juicio GO/±NG se realiza estableciendo las tolerancias superior e inferior.</li>
+<li class="extra">Pantalla giratoria 330°.</li>
+</ul>
+
+<button class="btn-vermas">Ver más</button>
+
+
+<button class="btn-agregar" onclick="agregarAlCarrito(this)">
+  Agregar a cotización
+</button>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-block">
+        <h3>Correo de Ventas</h3>
+        <p><i class="fa fa-envelope"></i> <a href="mailto:ventas@dmfindustrial.com.mx">ventas@dmfindustrial.com.mx</a></p>
+      </div>
+      <div class="footer-block">
+        <h3>Correo de Compras</h3>
+        <p><i class="fa fa-envelope"></i> <a href="mailto:compras@dmfindustrial.com.mx">compras@dmfindustrial.com.mx</a></p>
+      </div>
+      <div class="footer-block">
+        <h3>Teléfono</h3>
+        <p><i class="fa fa-phone"></i> <a href="tel:+526649826185">664 982 6185</a></p>
+      </div>
+      <div class="footer-block">
+        <h3>Dirección</h3>
+        <p><i class="fa fa-map-marker-alt"></i> Lago Ness 19301, El Lago, 22210 Tijuana, B.C.</p>
+      </div>
+    </div> <br></br><br></br>
+
+<ul class="footer-menu">
+ <li><a href="index.html#inicio">Inicio</a></li>
+  <li><a href="fixturaspagina.html">Servicios</a></li>
+   <li><a href="index.html#sobre-nosotros">Nosotros</a></li>
+    <li><a href="index.html#contacto">Contacto</a></li>
+     <li><a href="ubicacion.html">Ubicación</a></li>
+   </ul>
+
+    <div class="footer-bottom">
+      &copy; 2025-2026 <span class="logo">DMF Industrial</span>. Todos los derechos reservados.
+    </div>
+  </footer>
+
+  <!-- WhatsApp -->
+  <a href="https://wa.me/526648577464" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script>
+    let lastScroll = 0;
+    const navMenu = document.querySelector('nav');
+
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+
+      if (currentScroll > lastScroll && currentScroll > 50) {
+        navMenu.classList.add('oculto');
+      } else {
+        navMenu.classList.remove('oculto');
+      }
+
+      lastScroll = currentScroll;
+    });
+
+  
+const menuToggle = document.getElementById("mobile-menu");
+  const navList = document.querySelector(".nav-list");
+
+  menuToggle.addEventListener("click", function() {
+    // Esto abre/cierra el menú
+    navList.classList.toggle("active");
+    // Esto activa la animación de la X
+    this.classList.toggle("active");
+  });
+
+
+
+document.querySelectorAll(".btn-vermas").forEach(boton=>{
+
+boton.addEventListener("click",function(){
+
+let producto=this.closest(".producto");
+let extras=producto.querySelectorAll(".extra");
+
+let abiertos=this.classList.contains("abierto");
+
+extras.forEach(item=>{
+item.style.display=abiertos?"none":"list-item";
+});
+
+this.textContent=abiertos?"Ver más":"Ver menos";
+
+this.classList.toggle("abierto");
+
+});
+
+});
+
+
+
+
+
+
+
+
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+function agregarAlCarrito(boton){
+
+    const producto = boton.closest(".producto");
+    const nombre = producto.querySelector("h3").innerText;
+
+    let existente = carrito.find(p => p.nombre === nombre);
+
+    if(existente){
+        existente.cantidad += 1;
+    } else {
+        carrito.push({nombre, cantidad:1});
+    }
+
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+
+    alert("Producto agregado");
+}
+  </script>
+
+</body>
+</html>
