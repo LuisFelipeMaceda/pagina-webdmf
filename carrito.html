@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Carrito | DMF Industrial</title>
+
+  <style>
+    body{
+      font-family: Arial;
+      padding:40px;
+      background:#f5f5f5;
+    }
+
+    h1{
+      text-align:center;
+    }
+
+    .contenedor{
+      max-width:700px;
+      margin:auto;
+      background:white;
+      padding:20px;
+      border-radius:10px;
+    }
+
+    .item{
+      display:flex;
+      justify-content:space-between;
+      padding:10px;
+      border-bottom:1px solid #ddd;
+    }
+
+    button{
+      background:#4b0082;
+      color:white;
+      border:none;
+      padding:5px 10px;
+      border-radius:5px;
+      cursor:pointer;
+    }
+
+    form{
+      margin-top:20px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    input, textarea{
+      padding:10px;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>Tu cotización</h1>
+
+<div class="contenedor">
+
+  <!-- LISTA -->
+  <div id="listaCarrito"></div>
+
+  <!-- BOTÓN VACIAR -->
+  <button onclick="vaciarCarrito()">Vaciar carrito</button>
+
+  <!-- FORMULARIO -->
+  <h2>Enviar cotización</h2>
+
+  <form id="formCotizacion" action="https://formsubmit.co/luismaceda13@gmail.com" method="POST">
+
+    <input type="text" name="nombre" placeholder="Tu nombre" required>
+    <input type="email" name="correo" placeholder="Tu correo" required>
+    <textarea name="mensaje" placeholder="Mensaje adicional"></textarea>
+
+    <input type="hidden" name="carrito" id="carritoInput">
+
+    <button type="submit">Enviar cotización</button>
+
+  </form>
+
+</div>
+
+<script>
+
+// ===== 1. TRAER CARRITO =====
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+// ===== 2. MOSTRAR =====
+function mostrarCarrito(){
+
+    let contenedor = document.getElementById("listaCarrito");
+
+    contenedor.innerHTML = "";
+
+    if(carrito.length === 0){
+        contenedor.innerHTML = "<p>No hay productos en tu cotización</p>";
+        return;
+    }
+
+    carrito.forEach((item, index) => {
+        contenedor.innerHTML += `
+            <div class="item">
+                <span>${item.nombre} (x${item.cantidad})</span>
+                <button onclick="eliminar(${index})">Eliminar</button>
+            </div>
+        `;
+    });
+}
+
+// ===== 3. ELIMINAR =====
+function eliminar(index){
+    carrito.splice(index,1);
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+    mostrarCarrito();
+}
+
+// ===== 4. VACIAR =====
+function vaciarCarrito(){
+    localStorage.removeItem("carrito");
+    carrito = [];
+    mostrarCarrito();
+}
+
+// ===== 5. ENVIAR =====
+document.getElementById("formCotizacion").addEventListener("submit", function(){
+
+    let texto = "COTIZACIÓN:\n\n" +
+    carrito.map(p => `• ${p.nombre} (x${p.cantidad})`).join("\n");
+
+    if(carrito.length === 0){
+        texto = "No seleccionó productos";
+    }
+
+    document.getElementById("carritoInput").value = texto;
+
+});
+
+// ===== 6. INICIAR =====
+mostrarCarrito();
+
+</script>
+
+</body>
+</html>
